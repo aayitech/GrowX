@@ -1,7 +1,15 @@
+import AboutHero from "@/components/about/AboutHero";
+import Story from "@/components/about/Story";
+import Values from "@/components/about/Values";
+
 export default function AboutPage() {
   return (
     <main>
-      <h1>About Us</h1>
+      <AboutHero />
+
+      <Story />
+
+      <Values />
     </main>
   );
 }

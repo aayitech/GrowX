@@ -1,7 +1,11 @@
+import ContactHero from "@/components/contact/ContactHero";
+import ContactForm from "@/components/contact/ContactForm";
+
 export default function ContactPage() {
   return (
     <main>
-      <h1>Contact Us</h1>
+      <ContactHero />
+      <ContactForm />
     </main>
   );
 }
