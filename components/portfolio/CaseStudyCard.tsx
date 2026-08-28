@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
-  BarChart3,
   TrendingUp,
 } from "lucide-react";
 
@@ -25,132 +24,75 @@ export interface CaseStudy {
   slug?: string;
 }
 
-interface CaseStudyCardProps {
-  study: CaseStudy;
-}
-
-/* Dummy Portfolio Data */
+/* Real Portfolio Case Studies */
 export const caseStudies: CaseStudy[] = [
   {
-    title: "Amazon Marketplace Growth",
-    clientType: "Consumer Brand",
-    platform: "Amazon",
-    category: "Marketplace Management",
+    title: "TikTok Shop Germany",
+    clientType: "Ecommerce Brand",
+    platform: "TikTok Shop",
+    category: "Marketplace Growth",
     summary:
-      "Improved marketplace visibility, conversion, and overall sales performance through listing optimization and strategic account management.",
+      "Improved TikTok Shop Germany performance across GMV, orders, customers, and items sold, with strong affiliate-driven sales activity.",
     results: [
       {
         label: "GMV Growth",
-        value: "+68%",
+        value: "+75.73%",
       },
       {
-        label: "Visitor Growth",
-        value: "+42%",
+        label: "Orders Growth",
+        value: "+85.68%",
       },
     ],
-    slug: "amazon-marketplace-growth",
+    image: "/portfolio/tiktok-germany/1.png",
+    slug: "tiktok-germany",
   },
 
   {
-    title: "TikTok Shop Expansion",
-    clientType: "Beauty & Lifestyle",
+    title: "TikTok Shop UK",
+    clientType: "Ecommerce Brand",
     platform: "TikTok Shop",
-    category: "TikTok Shop Growth",
+    category: "Marketplace Growth",
     summary:
-      "Built a stronger TikTok Shop presence with optimized product listings and marketplace growth strategies.",
+      "Managed TikTok Shop UK performance across shop analytics and creator affiliate activity, with measurable marketplace sales and content performance.",
     results: [
       {
-        label: "Revenue Growth",
-        value: "+91%",
+        label: "March GMV",
+        value: "£129.5K",
       },
       {
-        label: "Product Views",
-        value: "+57%",
+        label: "March Orders",
+        value: "5,353",
       },
     ],
-    slug: "tiktok-shop-expansion",
+    image: "/portfolio/tiktok-uk/1.png",
+    slug: "tiktok-uk",
   },
 
   {
-    title: "Wayfair Seller Optimization",
+    title: "Wayfair Marketplace Growth",
     clientType: "Home & Furniture",
     platform: "Wayfair",
     category: "Seller Optimization",
     summary:
-      "Optimized product visibility and marketplace performance through improved listings, catalog structure, and account management.",
+      "Improved Wayfair marketplace performance across revenue, orders, units sold, customer visits, and conversion activity.",
     results: [
       {
-        label: "Sales Growth",
-        value: "+54%",
+        label: "Annual Revenue",
+        value: "£146.4K",
       },
       {
-        label: "Traffic Growth",
-        value: "+37%",
+        label: "Customer Visits",
+        value: "198K",
       },
     ],
-    slug: "wayfair-seller-optimization",
-  },
-
-  {
-    title: "Amazon PPC Performance",
-    clientType: "Ecommerce Brand",
-    platform: "Amazon",
-    category: "PPC & Ads Management",
-    summary:
-      "Refined campaign structure, targeting, and budget allocation to improve advertising efficiency and marketplace revenue.",
-    results: [
-      {
-        label: "ROAS Improvement",
-        value: "+73%",
-      },
-      {
-        label: "Ad Revenue",
-        value: "+61%",
-      },
-    ],
-    slug: "amazon-ppc-performance",
-  },
-
-  {
-    title: "Amazon Listing Transformation",
-    clientType: "Consumer Products",
-    platform: "Amazon",
-    category: "Listing & SEO",
-    summary:
-      "Transformed product listings with stronger SEO, improved content structure, and conversion-focused optimization.",
-    results: [
-      {
-        label: "Conversion Rate",
-        value: "+46%",
-      },
-      {
-        label: "Organic Traffic",
-        value: "+39%",
-      },
-    ],
-    slug: "amazon-listing-transformation",
-  },
-
-  {
-    title: "TikTok Shop Revenue Growth",
-    clientType: "Lifestyle Brand",
-    platform: "TikTok Shop",
-    category: "Account Management",
-    summary:
-      "Strengthened marketplace operations and product presentation to support consistent TikTok Shop revenue growth.",
-    results: [
-      {
-        label: "GMV Growth",
-        value: "+76%",
-      },
-      {
-        label: "Orders",
-        value: "+64%",
-      },
-    ],
-    slug: "tiktok-shop-revenue-growth",
+    image: "/portfolio/wayfair-sale/1.png",
+    slug: "wayfair-sale",
   },
 ];
+
+interface CaseStudyCardProps {
+  study: CaseStudy;
+}
 
 export default function CaseStudyCard({
   study,
@@ -160,6 +102,7 @@ export default function CaseStudyCard({
 
       {/* Visual */}
       <div className="relative aspect-[16/9] overflow-hidden bg-[#FAFAFA]">
+
         {study.image ? (
           <Image
             src={study.image}
@@ -201,19 +144,7 @@ export default function CaseStudyCard({
             )}
 
           </div>
-        ) : (
-          <div className="flex h-full items-center justify-center">
-            <div className="flex flex-col items-center gap-3 text-center">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#7B3FF2]/10">
-                <BarChart3 className="h-6 w-6 text-[#7B3FF2]" />
-              </div>
-
-              <span className="font-inter text-sm text-black/40">
-                Case study visual
-              </span>
-            </div>
-          </div>
-        )}
+        ) : null}
 
         {/* Platform */}
         <div className="absolute bottom-4 left-4">
@@ -221,6 +152,7 @@ export default function CaseStudyCard({
             {study.platform}
           </span>
         </div>
+
       </div>
 
       {/* Content */}
@@ -228,6 +160,7 @@ export default function CaseStudyCard({
 
         {/* Category */}
         <div className="mb-3 flex items-center gap-2">
+
           <span className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-[#7B3FF2]">
             {study.category}
           </span>
@@ -237,6 +170,7 @@ export default function CaseStudyCard({
           <span className="font-inter text-xs text-black/50">
             {study.clientType}
           </span>
+
         </div>
 
         {/* Title */}
@@ -252,30 +186,37 @@ export default function CaseStudyCard({
         {/* Results */}
         {study.results.length > 0 && (
           <div className="mt-6 grid grid-cols-2 gap-3">
+
             {study.results.map((result) => (
               <div
                 key={`${result.label}-${result.value}`}
                 className="rounded-2xl bg-[#FAFAFA] p-4"
               >
+
                 <div className="mb-2 flex items-center gap-2">
+
                   <TrendingUp className="h-4 w-4 text-[#7B3FF2]" />
 
                   <span className="font-inter text-xs font-medium text-black/50">
                     {result.label}
                   </span>
+
                 </div>
 
                 <p className="font-poppins text-xl font-extrabold text-[#151515]">
                   {result.value}
                 </p>
+
               </div>
             ))}
+
           </div>
         )}
 
         {/* CTA */}
         {study.slug && (
           <div className="mt-6 border-t border-black/5 pt-5">
+
             <Link
               href={`/portfolio/${study.slug}`}
               className="group/link inline-flex items-center gap-2 font-poppins text-sm font-bold text-[#7B3FF2] transition-colors hover:text-[#4B1FD4]"
@@ -284,6 +225,7 @@ export default function CaseStudyCard({
 
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1" />
             </Link>
+
           </div>
         )}
 

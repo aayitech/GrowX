@@ -91,3 +91,17 @@
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+@keyframes brands-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-brands {
+  animation: brands-scroll 30s linear infinite;
+}
