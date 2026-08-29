@@ -1,10 +1,49 @@
+"use client";
+
+import { useState } from "react";
 import {
   ArrowRight,
   Mail,
   MessageCircle,
 } from "lucide-react";
+import SubmissionSuccess from "./SubmissionSuccess";
 
 export default function ContactForm() {
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send enquiry");
+      }
+
+      setSubmitted(true);
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      setError(
+        "Something went wrong. Please try again or contact us directly."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <section
       id="contact-form"
@@ -108,113 +147,134 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* Form */}
+        {/* Form / Success */}
         <div className="rounded-3xl border border-black/5 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
-          <div className="mb-8">
-            <h3 className="font-poppins text-2xl font-bold text-[#151515]">
-              Tell Us About Your Store
-            </h3>
 
-            <p className="mt-2 font-inter text-sm leading-6 text-black/50">
-              Complete the form below and we'll get back to you.
-            </p>
-          </div>
+          {submitted ? (
+            <SubmissionSuccess />
+          ) : (
+            <>
+              {/* Form heading */}
+              <div className="mb-8">
+                <h3 className="font-poppins text-2xl font-bold text-[#151515]">
+                  Tell Us About Your Store
+                </h3>
 
-          <form
-            action="/api/contact"
-            method="POST"
-            className="space-y-5"
-          >
-            {/* Name */}
-            <div>
-              <label
-                htmlFor="name"
-                className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                <p className="mt-2 font-inter text-sm leading-6 text-black/50">
+                  Complete the form below and we'll get back to you.
+                </p>
+              </div>
+
+              {/* Form */}
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-5"
               >
-                Name
-              </label>
 
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                placeholder="Your name"
-                className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
-              />
-            </div>
+                {/* Name */}
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                  >
+                    Name
+                  </label>
 
-            {/* Email */}
-            <div>
-              <label
-                htmlFor="email"
-                className="mb-2 block font-inter text-sm font-medium text-[#151515]"
-              >
-                Email
-              </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    placeholder="Your name"
+                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
+                  />
+                </div>
 
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                placeholder="you@company.com"
-                className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
-              />
-            </div>
+                {/* Email */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                  >
+                    Email
+                  </label>
 
-            {/* Store URL */}
-            <div>
-              <label
-                htmlFor="storeUrl"
-                className="mb-2 block font-inter text-sm font-medium text-[#151515]"
-              >
-                Store URL
-              </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="you@company.com"
+                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
+                  />
+                </div>
 
-              <input
-                id="storeUrl"
-                name="storeUrl"
-                type="url"
-                placeholder="https://yourstore.com"
-                className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
-              />
-            </div>
+                {/* Store URL */}
+                <div>
+                  <label
+                    htmlFor="storeUrl"
+                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                  >
+                    Store URL
+                  </label>
 
-            {/* Message */}
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block font-inter text-sm font-medium text-[#151515]"
-              >
-                Message
-              </label>
+                  <input
+                    id="storeUrl"
+                    name="storeUrl"
+                    type="url"
+                    placeholder="https://yourstore.com"
+                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
+                  />
+                </div>
 
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={6}
-                placeholder="Tell us about your store and what you'd like help with..."
-                className="w-full resize-none rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm leading-6 text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
-              />
-            </div>
+                {/* Message */}
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                  >
+                    Message
+                  </label>
 
-            {/* Submit */}
-            <button
-              type="submit"
-              className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#7B3FF2] px-6 py-3.5 font-poppins text-sm font-bold text-white transition-all duration-300 hover:bg-[#4B1FD4] hover:shadow-[0_12px_35px_rgba(123,63,242,0.25)]"
-            >
-              Send Enquiry
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={6}
+                    placeholder="Tell us about your store and what you'd like help with..."
+                    className="w-full resize-none rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm leading-6 text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
+                  />
+                </div>
 
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
+                {/* Error */}
+                {error && (
+                  <p className="rounded-xl bg-red-50 px-4 py-3 text-center font-inter text-sm text-red-600">
+                    {error}
+                  </p>
+                )}
 
-            <p className="text-center font-inter text-xs leading-5 text-black/40">
-              By submitting this form, you agree to be contacted regarding
-              your enquiry.
-            </p>
-          </form>
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#7B3FF2] px-6 py-3.5 font-poppins text-sm font-bold text-white transition-all duration-300 hover:bg-[#4B1FD4] hover:shadow-[0_12px_35px_rgba(123,63,242,0.25)] disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  {loading ? "Sending..." : "Send Enquiry"}
+
+                  {!loading && (
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  )}
+                </button>
+
+                <p className="text-center font-inter text-xs leading-5 text-black/40">
+                  By submitting this form, you agree to be contacted regarding
+                  your enquiry.
+                </p>
+
+              </form>
+            </>
+          )}
+
         </div>
       </div>
     </section>

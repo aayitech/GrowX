@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "GrowX Website <onboarding@resend.dev>",
+from: "GrowX Website <noreply@getgrowx.com>",
       to: ["admingrowx@gmail.com"],
       replyTo: email,
       subject: `New GrowX Enquiry from ${name}`,
