@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 
 export default function ContactHero() {
   return (
@@ -28,7 +28,7 @@ export default function ContactHero() {
             <MessageCircle className="h-4 w-4 text-[#7B3FF2]" />
 
             <span className="font-inter text-sm font-medium text-white/80">
-              Let's Talk Growth
+              Let&apos;s Talk Growth
             </span>
           </div>
 

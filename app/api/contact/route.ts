@@ -9,14 +9,21 @@ export async function POST(request: Request) {
 
     const name = formData.get("name")?.toString().trim();
     const email = formData.get("email")?.toString().trim();
+    const plan = formData.get("plan")?.toString().trim();
+    const platform = formData.get("platform")?.toString().trim();
+    const service = formData.get("service")?.toString().trim();
     const storeUrl = formData.get("storeUrl")?.toString().trim();
     const message = formData.get("message")?.toString().trim();
 
-    if (!name || !email || !message) {
+    if (!name || !email || !plan || !platform || !message) {
       return NextResponse.json(
-        { error: "Name, email, and message are required." },
+        { error: "Name, email, plan, platform, and message are required." },
         { status: 400 }
       );
+    }
+
+    if (!["Starter", "Growth", "Premium"].includes(plan)) {
+      return NextResponse.json({ error: "Please select a valid plan." }, { status: 400 });
     }
 
     const { data, error } = await resend.emails.send({
@@ -30,6 +37,12 @@ from: "GrowX Website <noreply@getgrowx.com>",
         <p><strong>Name:</strong> ${name}</p>
 
         <p><strong>Email:</strong> ${email}</p>
+
+        <p><strong>Pricing plan:</strong> ${plan}</p>
+
+        <p><strong>Marketplace platform:</strong> ${platform}</p>
+
+        ${service ? `<p><strong>Service interest:</strong> ${service}</p>` : ""}
 
         <p><strong>Store URL:</strong> ${
           storeUrl || "Not provided"

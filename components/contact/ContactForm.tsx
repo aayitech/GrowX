@@ -8,7 +8,15 @@ import {
 } from "lucide-react";
 import SubmissionSuccess from "./SubmissionSuccess";
 
-export default function ContactForm() {
+interface ContactFormProps {
+  initialPlan?: string;
+  initialService?: string;
+}
+
+export default function ContactForm({
+  initialPlan = "",
+  initialService = "",
+}: ContactFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -58,13 +66,13 @@ export default function ContactForm() {
           </p>
 
           <h2 className="mt-3 font-poppins text-3xl font-extrabold tracking-tight text-[#151515] sm:text-4xl">
-            Let's Talk About Your Store.
+            Let&apos;s Talk About Your Store.
           </h2>
 
           <p className="mt-5 max-w-lg font-inter text-base leading-7 text-black/60">
             Have a question about marketplace management, advertising,
             listing optimization, or growing your ecommerce business?
-            Send us your details and we'll take it from there.
+            Send us your details and we&apos;ll take it from there.
           </p>
 
           {/* Contact methods */}
@@ -161,8 +169,14 @@ export default function ContactForm() {
                 </h3>
 
                 <p className="mt-2 font-inter text-sm leading-6 text-black/50">
-                  Complete the form below and we'll get back to you.
+                  Complete the form below and we&apos;ll get back to you.
                 </p>
+
+                {initialService && (
+                  <p className="mt-3 rounded-xl bg-[#7B3FF2]/10 px-4 py-3 font-inter text-sm text-[#4B1FD4]">
+                    You&apos;re enquiring about: <strong>{initialService}</strong>
+                  </p>
+                )}
               </div>
 
               {/* Form */}
@@ -170,6 +184,9 @@ export default function ContactForm() {
                 onSubmit={handleSubmit}
                 className="space-y-5"
               >
+                {initialService && (
+                  <input type="hidden" name="service" value={initialService} />
+                )}
 
                 {/* Name */}
                 <div>
@@ -207,6 +224,53 @@ export default function ContactForm() {
                     placeholder="you@company.com"
                     className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all placeholder:text-black/35 focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
                   />
+                </div>
+
+                {/* Plan */}
+                <div>
+                  <label
+                    htmlFor="plan"
+                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                  >
+                    Pricing plan
+                  </label>
+
+                  <select
+                    id="plan"
+                    name="plan"
+                    required
+                    defaultValue={initialPlan}
+                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
+                  >
+                    <option value="" disabled>Select a plan</option>
+                    <option value="Starter">Starter — £500 / Month</option>
+                    <option value="Growth">Growth — £750 / Month</option>
+                    <option value="Premium">Premium — £1,000 / Month</option>
+                  </select>
+                </div>
+
+                {/* Marketplace platform */}
+                <div>
+                  <label
+                    htmlFor="platform"
+                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                  >
+                    Marketplace platform
+                  </label>
+
+                  <select
+                    id="platform"
+                    name="platform"
+                    required
+                    defaultValue=""
+                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
+                  >
+                    <option value="" disabled>Select a platform</option>
+                    <option value="Amazon">Amazon</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Walmart">Walmart</option>
+                    <option value="OnBuy">OnBuy</option>
+                  </select>
                 </div>
 
                 {/* Store URL */}
