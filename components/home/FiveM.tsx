@@ -1,37 +1,40 @@
 export default function FiveM() {
   return (
-    <section className="bg-white py-10 sm:py-12">
+    <section className="bg-[#FAFAFA] py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-center text-center sm:flex-row sm:gap-6 sm:text-left">
+        <div className="relative overflow-hidden rounded-3xl bg-[#151515] px-7 py-10 text-center sm:px-10 sm:py-12">
+          <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[#7B3FF2]/35 blur-3xl" />
+          <div className="relative flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
 
           <div>
-            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
-              Proven Results
+            <p className="font-heading text-[10px] font-bold uppercase tracking-[0.18em] text-[#B99CFF]">
+              Results that matter
             </p>
 
             <div className="mt-1 flex items-baseline justify-center gap-2 sm:justify-start">
-              <span className="font-heading text-4xl font-extrabold tracking-[-0.04em] text-[#151515] sm:text-5xl">
-                $5M
+              <span className="font-heading text-5xl font-extrabold tracking-[-0.04em] text-white sm:text-6xl">
+                $5M+
               </span>
 
-              <span className="font-heading text-sm font-bold text-[#151515]/60">
+              <span className="font-heading text-sm font-bold text-white/60">
                 USD
               </span>
             </div>
           </div>
 
-          <div className="hidden h-12 w-px bg-[#151515]/10 sm:block" />
+          <div className="hidden h-16 w-px bg-white/15 sm:block" />
 
-          <div className="mt-3 sm:mt-0">
-            <p className="font-heading text-sm font-bold text-[#151515]">
-              Brand sales achieved
+          <div className="max-w-md sm:text-left">
+            <p className="font-heading text-lg font-bold text-white">
+              Revenue generated for client brands
             </p>
 
-            <p className="mt-1 text-xs text-[#151515]/50">
-              Helping ecommerce brands scale across major marketplaces.
+            <p className="mt-2 text-sm leading-6 text-white/60">
+              Generated across ecommerce marketplaces in the last 12 months.
             </p>
           </div>
 
+        </div>
         </div>
       </div>
     </section>

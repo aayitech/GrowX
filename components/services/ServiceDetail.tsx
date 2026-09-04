@@ -29,17 +29,37 @@ export default function ServiceDetail({ service }: { service: Service }) {
             <p className="font-inter text-sm font-semibold uppercase tracking-[0.14em] text-[#7B3FF2]">How we help</p>
             <h2 className="mt-3 font-poppins text-3xl font-extrabold tracking-tight text-[#151515] sm:text-4xl">A practical plan for stronger marketplace performance.</h2>
             <p className="mt-5 font-inter leading-7 text-black/60">GrowX combines focused day-to-day support with clear, measurable improvements. We tailor the work around your account, catalogue, and growth goals.</p>
-          </div>
-          <div className="rounded-3xl border border-black/5 bg-white p-7 shadow-sm">
-            <h2 className="font-poppins text-xl font-bold text-[#151515]">What&apos;s included</h2>
-            <ul className="mt-6 space-y-4">
-              {service.features.map((feature) => (
-                <li key={feature} className="flex items-center gap-3 font-inter text-sm text-black/65">
-                  <Check className="h-5 w-5 shrink-0 text-[#7B3FF2]" /> {feature}
+            <h3 className="mt-8 font-poppins text-lg font-bold text-[#151515]">What this can help you achieve</h3>
+            <ul className="mt-4 space-y-3">
+              {service.outcomes.map((outcome) => (
+                <li key={outcome} className="flex items-start gap-3 font-inter text-sm leading-6 text-black/60">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#7B3FF2]" /> {outcome}
                 </li>
               ))}
             </ul>
           </div>
+          <div className="rounded-3xl border border-black/5 bg-white p-7 shadow-sm">
+            <h2 className="font-poppins text-xl font-bold text-[#151515]">What&apos;s included</h2>
+            <ul className="mt-6 space-y-4">
+              {service.deliverables.map((deliverable) => (
+                <li key={deliverable} className="flex items-center gap-3 font-inter text-sm text-black/65">
+                  <Check className="h-5 w-5 shrink-0 text-[#7B3FF2]" /> {deliverable}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-6 py-16 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 rounded-3xl bg-[#151515] p-8 sm:p-10 md:flex-row md:items-center">
+          <div>
+            <p className="font-inter text-sm font-semibold uppercase tracking-[0.14em] text-[#B99CFF]">Ready when you are</p>
+            <h2 className="mt-3 font-poppins text-2xl font-extrabold text-white sm:text-3xl">Let&apos;s build the right plan for your store.</h2>
+          </div>
+          <Link href={`/contact?service=${encodeURIComponent(service.title)}`} className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#7B3FF2] px-6 py-3.5 font-poppins text-sm font-bold text-white transition-colors hover:bg-[#4B1FD4]">
+            Get started <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
       </section>
     </main>

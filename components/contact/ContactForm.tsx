@@ -7,6 +7,7 @@ import {
   MessageCircle,
 } from "lucide-react";
 import SubmissionSuccess from "./SubmissionSuccess";
+import { services } from "@/components/services/ServiceCard";
 
 interface ContactFormProps {
   initialPlan?: string;
@@ -172,11 +173,7 @@ export default function ContactForm({
                   Complete the form below and we&apos;ll get back to you.
                 </p>
 
-                {initialService && (
-                  <p className="mt-3 rounded-xl bg-[#7B3FF2]/10 px-4 py-3 font-inter text-sm text-[#4B1FD4]">
-                    You&apos;re enquiring about: <strong>{initialService}</strong>
-                  </p>
-                )}
+                {initialService && <p className="mt-3 rounded-xl bg-[#7B3FF2]/10 px-4 py-3 font-inter text-sm text-[#4B1FD4]">Your selected service is ready below; you can change it if needed.</p>}
               </div>
 
               {/* Form */}
@@ -184,10 +181,6 @@ export default function ContactForm({
                 onSubmit={handleSubmit}
                 className="space-y-5"
               >
-                {initialService && (
-                  <input type="hidden" name="service" value={initialService} />
-                )}
-
                 {/* Name */}
                 <div>
                   <label
@@ -226,6 +219,31 @@ export default function ContactForm({
                   />
                 </div>
 
+                {/* Service */}
+                <div>
+                  <label
+                    htmlFor="service"
+                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
+                  >
+                    How can we help?
+                  </label>
+
+                  <select
+                    id="service"
+                    name="service"
+                    required
+                    defaultValue={initialService}
+                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
+                  >
+                    <option value="" disabled>Select a service</option>
+                    {services.map((service) => (
+                      <option key={service.slug} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
                 {/* Plan */}
                 <div>
                   <label
@@ -246,30 +264,6 @@ export default function ContactForm({
                     <option value="Starter">Starter — £500 / Month</option>
                     <option value="Growth">Growth — £750 / Month</option>
                     <option value="Premium">Premium — £1,000 / Month</option>
-                  </select>
-                </div>
-
-                {/* Marketplace platform */}
-                <div>
-                  <label
-                    htmlFor="platform"
-                    className="mb-2 block font-inter text-sm font-medium text-[#151515]"
-                  >
-                    Marketplace platform
-                  </label>
-
-                  <select
-                    id="platform"
-                    name="platform"
-                    required
-                    defaultValue=""
-                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 font-inter text-sm text-[#151515] outline-none transition-all focus:border-[#7B3FF2] focus:ring-2 focus:ring-[#7B3FF2]/10"
-                  >
-                    <option value="" disabled>Select a platform</option>
-                    <option value="Amazon">Amazon</option>
-                    <option value="TikTok">TikTok</option>
-                    <option value="Walmart">Walmart</option>
-                    <option value="OnBuy">OnBuy</option>
                   </select>
                 </div>
 

@@ -13,6 +13,8 @@ export interface Service {
   description: string;
   icon: "amazon" | "tiktok" | "wayfair" | "ppc" | "seo";
   features: string[];
+  deliverables: string[];
+  outcomes: string[];
   slug: string;
 }
 
@@ -32,6 +34,19 @@ export const services: Service[] = [
       "Marketplace optimization",
       "Performance monitoring",
     ],
+    deliverables: [
+      "Account-health and compliance monitoring",
+      "Catalogue, variation, and listing management",
+      "Keyword research and Amazon SEO improvements",
+      "Product-content and conversion optimisation",
+      "Inventory and order-performance monitoring",
+      "Regular account-performance reporting",
+    ],
+    outcomes: [
+      "A more visible and conversion-ready catalogue",
+      "Clearer account priorities and performance insight",
+      "Reliable day-to-day marketplace support",
+    ],
     slug: "amazon-marketplace-management",
   },
 
@@ -44,6 +59,19 @@ export const services: Service[] = [
       "Shop optimization",
       "Product optimization",
       "Growth strategy",
+    ],
+    deliverables: [
+      "Shop setup, structure, and ongoing management",
+      "Product catalogue and listing optimisation",
+      "Product presentation for social commerce",
+      "Promotions, campaigns, and affiliate support",
+      "Shop analytics and sales-performance tracking",
+      "Growth planning based on live shop data",
+    ],
+    outcomes: [
+      "A stronger, easier-to-shop TikTok storefront",
+      "Improved product discoverability and presentation",
+      "A practical roadmap for sustained shop growth",
     ],
     slug: "tiktok-shop-growth",
   },
@@ -58,6 +86,19 @@ export const services: Service[] = [
       "Catalog management",
       "Marketplace performance",
     ],
+    deliverables: [
+      "Catalogue structure and product-data improvements",
+      "Product titles, attributes, and content optimisation",
+      "Seller-account and performance monitoring",
+      "Inventory, pricing, and availability checks",
+      "Promotions and visibility opportunities",
+      "Regular marketplace-performance reporting",
+    ],
+    outcomes: [
+      "More complete and discoverable product information",
+      "A better-managed Wayfair seller account",
+      "Clearer visibility of sales and catalogue performance",
+    ],
     slug: "wayfair-seller-optimization",
   },
 
@@ -71,6 +112,19 @@ export const services: Service[] = [
       "Ad optimization",
       "Performance tracking",
     ],
+    deliverables: [
+      "Campaign structure and targeting strategy",
+      "Keyword, product, and audience targeting",
+      "Budget pacing and bid optimisation",
+      "Search-term analysis and negative targeting",
+      "Performance tracking against agreed goals",
+      "Clear reporting with next-step recommendations",
+    ],
+    outcomes: [
+      "Better control over advertising spend",
+      "More relevant traffic to priority products",
+      "Decisions guided by campaign performance data",
+    ],
     slug: "ppc-ads-management",
   },
 
@@ -83,6 +137,19 @@ export const services: Service[] = [
       "Listing optimization",
       "Keyword optimization",
       "SEO-focused content",
+    ],
+    deliverables: [
+      "Keyword research matched to marketplace search intent",
+      "Product-title and description improvements",
+      "Structured feature bullets and product information",
+      "Search-term and category optimisation",
+      "Content recommendations for stronger conversion",
+      "Ongoing listing-quality checks and updates",
+    ],
+    outcomes: [
+      "Clearer product messaging for shoppers",
+      "Stronger search relevance and discoverability",
+      "Listings built to support conversion as well as traffic",
     ],
     slug: "listing-seo-optimization",
   },
