@@ -32,46 +32,91 @@ export default function PricingPage() {
           </div>
 
           <div className="overflow-x-auto rounded-3xl border border-black/5 bg-white shadow-sm">
-            <table className="w-full min-w-[720px] border-collapse">
+            <table className="w-full min-w-[720px] table-fixed border-collapse">
+
               <thead>
                 <tr className="border-b border-black/5">
-                  <th scope="col" className="px-5 py-6 text-left sm:px-6" />
+                  {/* Feature column */}
+                  <th
+                    scope="col"
+                    className="w-[34%] px-5 py-6 text-left sm:px-6"
+                  />
+
                   {pricingPlans.map((plan) => (
                     <th
                       key={plan.name}
                       scope="col"
-                      className={`px-4 py-6 text-center font-poppins text-lg font-bold ${
-                        plan.popular ? "bg-[#7B3FF2] text-white" : "text-[#151515]"
+                      className={`w-[22%] px-4 py-6 text-center font-poppins text-lg font-bold ${
+                        plan.popular
+                          ? "bg-[#7B3FF2] text-white"
+                          : "text-[#151515]"
                       }`}
                     >
-                      {plan.name} {plan.popular && <span aria-label="Most popular">⭐</span>}
-                      <span className={`mt-1 block font-inter text-xs font-medium ${plan.popular ? "text-white/75" : "text-black/50"}`}>
+                      {plan.name}
+
+                      {plan.popular && (
+                        <span
+                          className="ml-1"
+                          aria-label="Most popular"
+                        >
+                          ⭐
+                        </span>
+                      )}
+
+                      <span
+                        className={`mt-1 block font-inter text-xs font-medium ${
+                          plan.popular
+                            ? "text-white/75"
+                            : "text-black/50"
+                        }`}
+                      >
                         {plan.price}
                       </span>
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody>
-                {pricingFeatures.map((feature) => <PricingCard key={feature.label} feature={feature} />)}
-              </tbody>
-            </table>
-          </div>
 
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {pricingPlans.map((plan) => (
-              <Link
-                key={plan.name}
-                href={`/contact?plan=${plan.name}`}
-                className={`rounded-2xl px-5 py-4 text-center font-poppins text-sm font-bold transition-colors ${
-                  plan.popular
-                    ? "bg-[#7B3FF2] text-white hover:bg-[#4B1FD4]"
-                    : "border border-black/10 bg-white text-[#151515] hover:border-[#7B3FF2] hover:text-[#7B3FF2]"
-                }`}
-              >
-                Choose {plan.name}
-              </Link>
-            ))}
+              <tbody>
+                {pricingFeatures.map((feature) => (
+                  <PricingCard
+                    key={feature.label}
+                    feature={feature}
+                  />
+                ))}
+              </tbody>
+
+              {/* Buttons aligned with pricing columns */}
+              <tfoot>
+                <tr>
+                  {/* Empty cell under feature column */}
+                  <td className="px-5 py-6 sm:px-6" />
+
+                  {pricingPlans.map((plan) => (
+                    <td
+                      key={plan.name}
+                      className={`px-4 py-6 ${
+                        plan.popular
+                          ? "bg-[#7B3FF2]/5"
+                          : ""
+                      }`}
+                    >
+                      <Link
+                        href={`/contact?plan=${plan.name}`}
+                        className={`block w-full rounded-2xl px-5 py-4 text-center font-poppins text-sm font-bold transition-colors ${
+                          plan.popular
+                            ? "bg-[#7B3FF2] text-white hover:bg-[#4B1FD4]"
+                            : "border border-black/10 bg-white text-[#151515] hover:border-[#7B3FF2] hover:text-[#7B3FF2]"
+                        }`}
+                      >
+                        Choose {plan.name}
+                      </Link>
+                    </td>
+                  ))}
+                </tr>
+              </tfoot>
+
+            </table>
           </div>
 
           {/* Pricing note */}
@@ -81,6 +126,7 @@ export default function PricingPage() {
               fit for your marketplace and growth goals.
             </p>
           </div>
+
         </div>
       </section>
     </main>
