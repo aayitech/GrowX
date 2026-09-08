@@ -20,12 +20,44 @@ const footerLinks = [
   },
 ];
 
-// const socialLinks = [
-//   // Add real social URLs when provided by the client.
-//   // { name: "Instagram", href: "https://instagram.com/..." },
-//   // { name: "Facebook", href: "https://facebook.com/..." },
-//   // { name: "LinkedIn", href: "https://linkedin.com/..." },
-// ];
+const socialLinks = [
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61592720395455",
+    icon: FacebookIcon,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/getgrowx/?viewAsMember=true",
+    icon: LinkedInIcon,
+  },
+];
+
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.385H7.078v-3.542h3.047V9.374c0-3.017 1.792-4.685 4.533-4.685 1.312 0 2.686.235 2.686.235v2.966h-1.513c-1.49 0-1.956.929-1.956 1.882v2.301h3.328l-.532 3.542h-2.796V24C19.612 23.094 24 18.1 24 12.073Z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V8.997h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.265 2.371 4.265 5.455v6.289ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124Zm1.782 13.019H3.555V8.997h3.564v11.455ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   return (
@@ -130,22 +162,24 @@ export default function Footer() {
             © {new Date().getFullYear()} GrowX. All rights reserved.
           </p>
 
-          {/* {socialLinks.length > 0 && (
-            <div className="flex items-center gap-5">
-              {socialLinks.map((social) => (
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
                 <a
                   key={social.name}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.name}
-                  className="text-[10px] text-white/35 transition-colors hover:text-primary"
+                  aria-label={`GrowX ${social.name}`}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/45 transition-all hover:border-primary hover:bg-primary hover:text-white"
                 >
-                  {social.name}
+                  <Icon className="h-4 w-4" />
                 </a>
-              ))}
-            </div>
-          )} */}
+              );
+            })}
+          </div>
 
         </div>
 

@@ -8,7 +8,7 @@ import {
 export interface CaseStudy {
   title: string;
   clientType: string;
-  platform: "Amazon" | "TikTok Shop" | "Wayfair";
+  platform: "Amazon" | "TikTok Shop" | "Wayfair" | "Walmart";
   category: string;
   summary: string;
 
@@ -87,6 +87,27 @@ export const caseStudies: CaseStudy[] = [
     ],
     image: "/portfolio/wayfair-sale/1.png",
     slug: "wayfair-sale",
+  },
+
+  {
+    title: "Walmart USA Marketplace Growth",
+    clientType: "Home & Bedding",
+    platform: "Walmart",
+    category: "Marketplace Growth",
+    summary:
+      "Managed Walmart USA catalog, fulfillment, sales, advertising, and seller performance across a growing marketplace account.",
+    results: [
+      {
+        label: "Total Orders",
+        value: "9,736",
+      },
+      {
+        label: "Ad ROAS",
+        value: "5.85",
+      },
+    ],
+    image: "/portfolio/walmart-usa/5.png",
+    slug: "walmart-usa",
   },
 ];
 

@@ -482,6 +482,186 @@ export const portfolioCaseStudies: PortfolioCaseStudy[] = [
       },
     ],
   },
+
+  // --------------------------------------------------
+  // WALMART USA
+  // --------------------------------------------------
+
+  {
+    slug: "walmart-usa",
+
+    title: "Walmart USA Marketplace Growth",
+
+    clientType: "Home & Bedding",
+
+    platform: "Walmart",
+
+    category: "Marketplace Growth",
+
+    intro:
+      "A Walmart USA case study covering catalog management, marketplace sales, WFS inventory, advertising performance, and seller standards.",
+
+    overview: {
+      title: "Walmart USA marketplace performance",
+
+      description:
+        "The supplied Walmart Seller Center analytics show an established catalog, sustained order activity, Walmart Fulfillment Services inventory, measurable advertising returns, and strong seller service metrics.",
+    },
+
+    keyResults: [
+      {
+        value: "9,736",
+        label: "Total Orders",
+        description:
+          "Total orders shown in the supplied Walmart Seller Center account.",
+      },
+
+      {
+        value: "5.85",
+        label: "Advertising ROAS",
+        description:
+          "Return on ad spend shown in the supplied campaign performance summary.",
+      },
+    ],
+
+    performance: [
+      {
+        value: "$28,163.68",
+        label: "Attributed Ad Sales",
+      },
+
+      {
+        value: "207",
+        label: "Live Items",
+      },
+
+      {
+        value: "87%",
+        label: "Daily In-Stock Sales Rate",
+      },
+
+      {
+        value: "96.3%",
+        label: "On-Time Delivery",
+      },
+    ],
+
+    additionalMetrics: [
+      {
+        value: "100%",
+        label: "Seller Response",
+      },
+
+      {
+        value: "5.0",
+        label: "Average Rating",
+      },
+    ],
+
+    sections: [
+      {
+        eyebrow: "Catalog & Inventory",
+        title: "Walmart catalog and WFS operations",
+
+        description:
+          "Catalog quality and Walmart Fulfillment Services inventory management shown in the supplied account screenshots.",
+
+        images: [
+          {
+            src: "/portfolio/walmart-usa/1.png",
+            alt: "Walmart USA WFS inventory performance",
+          },
+
+          {
+            src: "/portfolio/walmart-usa/2.png",
+            alt: "Walmart USA catalog and listing quality",
+          },
+        ],
+      },
+
+      {
+        eyebrow: "Sales & Orders",
+        title: "Marketplace sales activity",
+
+        description:
+          "Order volume, account statements, and daily marketplace sales performance from Walmart Seller Center.",
+
+        images: [
+          {
+            src: "/portfolio/walmart-usa/3.png",
+            alt: "Walmart USA order activity",
+          },
+
+          {
+            src: "/portfolio/walmart-usa/4.png",
+            alt: "Walmart USA account statement",
+          },
+
+          {
+            src: "/portfolio/walmart-usa/5.png",
+            alt: "Walmart USA sales analytics",
+          },
+        ],
+      },
+
+      {
+        eyebrow: "Advertising & Service",
+        title: "Advertising returns and seller standards",
+
+        description:
+          "Campaign performance and operational standards across advertising, delivery, response, refunds, and customer ratings.",
+
+        images: [
+          {
+            src: "/portfolio/walmart-usa/6.png",
+            alt: "Walmart USA advertising campaign performance",
+          },
+
+          {
+            src: "/portfolio/walmart-usa/7.png",
+            alt: "Walmart USA seller performance standards",
+          },
+        ],
+      },
+    ],
+
+    images: [
+      {
+        src: "/portfolio/walmart-usa/1.png",
+        alt: "Walmart USA WFS inventory",
+      },
+
+      {
+        src: "/portfolio/walmart-usa/2.png",
+        alt: "Walmart USA catalog",
+      },
+
+      {
+        src: "/portfolio/walmart-usa/3.png",
+        alt: "Walmart USA orders",
+      },
+
+      {
+        src: "/portfolio/walmart-usa/4.png",
+        alt: "Walmart USA statement",
+      },
+
+      {
+        src: "/portfolio/walmart-usa/5.png",
+        alt: "Walmart USA sales",
+      },
+
+      {
+        src: "/portfolio/walmart-usa/6.png",
+        alt: "Walmart USA advertising",
+      },
+
+      {
+        src: "/portfolio/walmart-usa/7.png",
+        alt: "Walmart USA seller standards",
+      },
+    ],
+  },
 ];
 
 export function getPortfolioCaseStudy(

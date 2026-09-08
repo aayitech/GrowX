@@ -1,7 +1,8 @@
 export type PortfolioPlatform =
   | "Amazon"
   | "TikTok Shop"
-  | "Wayfair";
+  | "Wayfair"
+  | "Walmart";
 
 export interface CaseStudyMetric {
   value: string;

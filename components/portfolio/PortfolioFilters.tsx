@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 
-export type PortfolioFilter = "All" | "Amazon" | "TikTok Shop" | "Wayfair";
+export type PortfolioFilter =
+  | "All"
+  | "Amazon"
+  | "TikTok Shop"
+  | "Wayfair"
+  | "Walmart";
 
 interface PortfolioFiltersProps {
   activeFilter?: PortfolioFilter;
@@ -14,6 +19,7 @@ const filters: PortfolioFilter[] = [
   "Amazon",
   "TikTok Shop",
   "Wayfair",
+  "Walmart",
 ];
 
 export default function PortfolioFilters({
