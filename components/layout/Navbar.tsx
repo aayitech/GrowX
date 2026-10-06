@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navItems = [
@@ -13,6 +12,10 @@ const navItems = [
   {
     name: "Services",
     href: "/services",
+  },
+  {
+    name: "Manufacturing",
+    href: "/manufacturing",
   },
   {
     name: "Pricing",
@@ -30,49 +33,6 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
-  const isManufacturingPage = pathname === "/manufacturing";
-
-  if (isManufacturingPage) {
-    const nbItems = [
-      { name: "Production", href: "#production" },
-      { name: "Products", href: "#products" },
-      { name: "Quality", href: "#quality" },
-    ];
-
-    return (
-      <header className="sticky top-0 z-50 border-b border-[#dce5ea] bg-white/95 backdrop-blur-md">
-        <div className="mx-auto flex h-[76px] max-w-7xl items-center gap-8 px-6 lg:px-8">
-          <Link href="/manufacturing" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
-            <span className="grid h-10 w-10 place-items-center rounded-sm bg-[#058ebd] font-heading text-sm font-extrabold tracking-tight text-white">NB</span>
-            <span className="flex flex-col leading-none">
-              <span className="font-heading text-[17px] font-extrabold tracking-[0.12em] text-[#15384a]">NB TEXTILES</span>
-              <span className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-[#63808c]">Made with purpose</span>
-            </span>
-          </Link>
-
-          <nav className="ml-auto hidden items-center gap-8 lg:flex">
-            {nbItems.map((item) => (
-              <a key={item.name} href={item.href} className="text-[13px] font-medium text-[#385564] transition-colors hover:text-[#058ebd]">{item.name}</a>
-            ))}
-          </nav>
-          <Link href="/contact" className="hidden h-10 items-center justify-center bg-[#058ebd] px-5 text-[11px] font-bold uppercase tracking-[0.1em] text-white transition-colors hover:bg-[#087ca4] lg:inline-flex">Request a quote</Link>
-
-          <button type="button" className="ml-auto grid h-10 w-10 place-items-center border border-[#dce5ea] text-[#15384a] lg:hidden" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle navigation" aria-expanded={menuOpen}>
-            <span className="text-lg leading-none">{menuOpen ? "×" : "☰"}</span>
-          </button>
-        </div>
-        {menuOpen && (
-          <div className="border-t border-[#dce5ea] bg-white px-6 py-5 lg:hidden">
-            <nav className="mx-auto flex max-w-7xl flex-col gap-1">
-              {nbItems.map((item) => <a key={item.name} href={item.href} onClick={() => setMenuOpen(false)} className="px-3 py-3 text-sm font-medium text-[#385564]">{item.name}</a>)}
-              <Link href="/contact" onClick={() => setMenuOpen(false)} className="mt-2 bg-[#058ebd] px-4 py-3 text-center text-xs font-bold uppercase tracking-[0.1em] text-white">Request a quote</Link>
-            </nav>
-          </div>
-        )}
-      </header>
-    );
-  }
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-md">

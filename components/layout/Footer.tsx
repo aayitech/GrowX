@@ -1,8 +1,5 @@
-'use client';
-
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const footerLinks = [
   {
@@ -63,28 +60,6 @@ function LinkedInIcon({ className }: { className?: string }) {
 }
 
 export default function Footer() {
-  const pathname = usePathname();
-
-  if (pathname === "/manufacturing") {
-    return (
-      <footer className="bg-[#15384a] text-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <div>
-            <Link href="/manufacturing" className="font-heading text-sm font-extrabold tracking-[0.16em]">NB TEXTILES</Link>
-            <p className="mt-2 text-xs text-white/60">Thoughtfully made textiles, from yarn to finished product.</p>
-          </div>
-          <div className="flex flex-wrap gap-x-7 gap-y-3 text-xs text-white/70">
-            <a href="#production" className="transition-colors hover:text-white">Production</a>
-            <a href="#products" className="transition-colors hover:text-white">Products</a>
-            <a href="#quality" className="transition-colors hover:text-white">Quality</a>
-            <Link href="/contact" className="transition-colors hover:text-white">Contact</Link>
-          </div>
-          <p className="text-[10px] text-white/45">© {new Date().getFullYear()} NB Textiles. All rights reserved.</p>
-        </div>
-      </footer>
-    );
-  }
-
   return (
     <footer className="bg-[var(--black)] text-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
