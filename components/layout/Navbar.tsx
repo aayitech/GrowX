@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navItems = [
@@ -33,6 +34,7 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/95 backdrop-blur-md">
@@ -56,17 +58,22 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <nav className="ml-auto hidden items-center gap-7 lg:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="group relative font-sans text-[13px] font-medium text-black/75 transition-colors duration-200 hover:text-[var(--purple)]"
-            >
-              {item.name}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
-              <span className="absolute -bottom-2 left-0 h-[2px] w-0 rounded-full bg-[var(--purple)] transition-all duration-200 group-hover:w-full" />
-            </Link>
-          ))}
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                className={`group relative font-sans text-[13px] font-medium transition-colors duration-200 hover:text-[var(--purple)] ${isActive ? "text-[var(--purple)]" : "text-black/75"}`}
+              >
+                {item.name}
+
+                <span className={`absolute -bottom-2 left-0 h-[2px] rounded-full bg-[var(--purple)] transition-all duration-200 group-hover:w-full ${isActive ? "w-full" : "w-0"}`} />
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Desktop CTA */}
@@ -109,16 +116,21 @@ export default function Navbar() {
       {menuOpen && (
         <div className="border-t border-black/5 bg-white px-6 py-6 lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="rounded-lg px-3 py-3 font-sans text-sm font-medium text-black/75 transition-colors hover:bg-[#FAFAFA] hover:text-[var(--purple)]"
-              >
-                {item.name}
-              </Link>
-            ))}
+              {navItems.map((item) => {
+                const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`rounded-lg px-3 py-3 font-sans text-sm font-medium transition-colors hover:bg-[#FAFAFA] hover:text-[var(--purple)] ${isActive ? "bg-[#FAFAFA] text-[var(--purple)]" : "text-black/75"}`}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
 
             <Link
               href="/contact"
