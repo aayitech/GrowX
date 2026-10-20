@@ -35,12 +35,14 @@ export default function Hero() {
               Get Started
             </Link>
 
-            <Link
-              href="/contact"
+            <a
+              href="https://calendly.com/admingrowx/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-11 items-center justify-center rounded-full border border-white/20 bg-transparent px-6 font-heading text-xs font-bold text-white transition hover:-translate-y-0.5 hover:border-white hover:bg-white hover:text-[var(--black)]"
             >
               Book a Call
-            </Link>
+            </a>
 
           </div>
         </div>

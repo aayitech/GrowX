@@ -77,12 +77,14 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop CTA */}
-        <Link
-          href="/contact"
+        <a
+          href="https://calendly.com/admingrowx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden h-10 items-center justify-center rounded-full bg-[var(--purple)] px-5 font-heading text-xs font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--deep-purple)] hover:shadow-lg hover:shadow-purple-900/15 lg:inline-flex"
         >
           Book a Call
-        </Link>
+        </a>
 
         {/* Mobile Menu Button */}
         <button
@@ -132,13 +134,15 @@ export default function Navbar() {
                 );
               })}
 
-            <Link
-              href="/contact"
+            <a
+              href="https://calendly.com/admingrowx/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
               className="mt-3 inline-flex h-11 items-center justify-center rounded-full bg-[var(--purple)] px-5 font-heading text-xs font-bold text-white transition-colors hover:bg-[var(--deep-purple)]"
             >
               Book a Call
-            </Link>
+            </a>
           </nav>
         </div>
       )}

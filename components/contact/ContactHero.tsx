@@ -58,6 +58,15 @@ export default function ContactHero() {
               <Mail className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
 
+            <a
+              href="https://calendly.com/admingrowx/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3.5 font-poppins text-sm font-bold text-white transition-all duration-300 hover:border-[#7B3FF2] hover:bg-white/5"
+            >
+              Book a Meeting
+            </a>
+
             <Link
               href="#contact-form"
               className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3.5 font-poppins text-sm font-bold text-white transition-all duration-300 hover:border-[#7B3FF2] hover:bg-white/5"

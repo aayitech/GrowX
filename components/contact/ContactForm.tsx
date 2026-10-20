@@ -102,6 +102,10 @@ export default function ContactForm({
             Send us your details and we&apos;ll take it from there.
           </p>
 
+          <p className="mt-4 font-inter text-sm font-medium text-black/60">
+            Location: United Kingdom
+          </p>
+
           {/* Contact methods */}
           <div className="mt-8 space-y-4">
 

@@ -43,12 +43,14 @@ export default function HomeCTA() {
               Get Started
             </Link>
 
-            <Link
-              href="/contact"
+            <a
+              href="https://calendly.com/admingrowx/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex h-11 w-full items-center justify-center rounded-full border border-white/20 px-6 font-heading text-xs font-bold text-white transition-all duration-200 hover:border-white hover:bg-white hover:text-[var(--black)] sm:w-auto"
             >
               Book a Call
-            </Link>
+            </a>
 
           </div>
 

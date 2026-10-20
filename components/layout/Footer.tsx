@@ -143,12 +143,14 @@ export default function Footer() {
 
             </div>
 
-            <Link
-              href="/contact"
+            <a
+              href="https://calendly.com/admingrowx/30min"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-6 inline-flex h-10 items-center justify-center rounded-full bg-primary px-5 font-heading text-xs font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--deep-purple)] hover:shadow-lg hover:shadow-purple-950/20"
             >
               Book a Call
-            </Link>
+            </a>
 
           </div>
 
