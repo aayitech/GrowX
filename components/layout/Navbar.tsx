@@ -14,10 +14,10 @@ const navItems = [
     name: "Services",
     href: "/services",
   },
-  {
-    name: "Manufacturing",
-    href: "/manufacturing",
-  },
+  // {
+  //   name: "Manufacturing",
+  //   href: "/manufacturing",
+  // },
   {
     name: "Pricing",
     href: "/pricing",
