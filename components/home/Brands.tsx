@@ -1,8 +1,10 @@
+import { Armchair, House, Layers3, Pill } from "lucide-react";
+
 const categories = [
-  "Home and Decor",
-  "Furniture",
-  "Supplements",
-  "Textiles",
+  { name: "Home and Decor", icon: House },
+  { name: "Furniture", icon: Armchair },
+  { name: "Supplements", icon: Pill },
+  { name: "Textiles", icon: Layers3 },
 ];
 
 export default function Brands() {
@@ -18,17 +20,22 @@ export default function Brands() {
           </h2>
         </div>
 
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map((category, index) => (
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
+          {categories.map(({ name, icon: Icon }, index) => (
             <li
-              key={category}
-              className="flex min-h-32 items-end rounded-2xl border border-black/8 bg-[#FAFAFA] p-6 transition-colors hover:border-primary/30 hover:bg-white"
+              key={name}
+              className="group relative flex min-h-40 flex-col justify-between overflow-hidden rounded-2xl border border-black/8 bg-[#FAFAFA] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-primary/25 hover:bg-white hover:shadow-lg hover:shadow-black/5"
             >
-              <span className="mr-4 self-start font-heading text-xs font-bold text-primary">
-                0{index + 1}
-              </span>
+              <div className="flex items-start justify-between">
+                <span className="font-heading text-xs font-bold tracking-wide text-primary">
+                  0{index + 1}
+                </span>
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white text-primary shadow-sm ring-1 ring-black/5 transition-colors group-hover:bg-primary group-hover:text-white">
+                  <Icon aria-hidden="true" size={20} strokeWidth={1.8} />
+                </span>
+              </div>
               <span className="font-heading text-lg font-bold tracking-tight text-[#151515] sm:text-xl">
-                {category}
+                {name}
               </span>
             </li>
           ))}
