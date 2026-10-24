@@ -1,52 +1,38 @@
-"use client";
-
-const brands = Array.from(
-  { length: 13 },
-  (_, i) => `/Brands Working/${i + 1}.png`
-);
+const categories = [
+  "Home and Decor",
+  "Furniture",
+  "Supplements",
+  "Textiles",
+];
 
 export default function Brands() {
   return (
-    <section className="overflow-hidden bg-white py-10">
-      <div className="mx-auto mb-7 max-w-7xl px-6">
-        <p className="text-center text-sm font-semibold uppercase tracking-[0.2em] text-[#7B3FF2]">
-          Brands we work with
-        </p>
-      </div>
-
-      <div className="relative w-full overflow-hidden">
-        <div className="brands-track flex w-max gap-6">
-          {/* First set */}
-          {brands.map((logo, index) => (
-            <div
-              key={`first-${index}`}
-              className="flex h-16 w-32 shrink-0 cursor-grab items-center justify-center active:cursor-grabbing"
-            >
-              <img
-                src={logo}
-                alt={`Client brand ${index + 1}`}
-                draggable={false}
-                className="max-h-14 max-w-[125px] object-contain"
-              />
-            </div>
-          ))}
-
-          {/* Duplicate set */}
-          {brands.map((logo, index) => (
-            <div
-              key={`second-${index}`}
-              className="flex h-16 w-32 shrink-0 cursor-grab items-center justify-center active:cursor-grabbing"
-            >
-              <img
-                src={logo}
-                alt=""
-                aria-hidden="true"
-                draggable={false}
-                className="max-h-14 max-w-[125px] object-contain"
-              />
-            </div>
-          ))}
+    <section className="bg-white py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-4 font-heading text-xs font-bold uppercase tracking-[0.18em] text-primary">
+            Our Focus
+          </p>
+          <h2 className="font-heading text-3xl font-extrabold leading-tight tracking-[-0.035em] sm:text-4xl md:text-5xl">
+            We Work in These Categories
+          </h2>
         </div>
+
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {categories.map((category, index) => (
+            <li
+              key={category}
+              className="flex min-h-32 items-end rounded-2xl border border-black/8 bg-[#FAFAFA] p-6 transition-colors hover:border-primary/30 hover:bg-white"
+            >
+              <span className="mr-4 self-start font-heading text-xs font-bold text-primary">
+                0{index + 1}
+              </span>
+              <span className="font-heading text-lg font-bold tracking-tight text-[#151515] sm:text-xl">
+                {category}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
